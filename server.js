@@ -35,6 +35,11 @@ function saveEvents(events) {
   fs.writeFileSync(eventsFile, JSON.stringify(events, null, 2));
 }
 
+// GET: confirm server is running
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "ok", message: "EventHub API is running" });
+});
+
 // POST: create new event
 app.post("/api/events", (req, res) => {
   const { title, description, date, location, maxAttendees } = req.body;
